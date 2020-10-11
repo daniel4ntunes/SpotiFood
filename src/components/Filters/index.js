@@ -76,7 +76,7 @@ const Filters = () => {
 
   useEffect(() => {
     axios
-      .get("http://www.mocky.io/v2/5a25fade2e0000213aa90776")
+      .get("https://www.mocky.io/v2/5a25fade2e0000213aa90776")
       .then((response) => {
         const fields = response.data.filters.map((field) => {
           if (field?.values) {
