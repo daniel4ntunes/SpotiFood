@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Redirect, useHistory } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import { MdExitToApp } from "react-icons/md";
 
 import { Container, Grid, Button } from "@material-ui/core";
@@ -7,8 +7,6 @@ import { Container, Grid, Button } from "@material-ui/core";
 import Logo from "../../components/Logo";
 
 const Login = () => {
-  const history = useHistory();
-
   const getHashParams = () => {
     const hashParams = {};
     let e,
@@ -39,7 +37,8 @@ const Login = () => {
     localStorage.setItem("@SpotiFood:type", type);
     localStorage.setItem("@SpotiFood:expires_in", expires_in);
 
-    history.push("/auth");
+    window.history.pushState({ urlPath: "/auth" }, "", "/auth");
+    window.location.reload();
 
     return (
       <Switch>
