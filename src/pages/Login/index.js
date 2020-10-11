@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, useHistory } from "react-router-dom";
 import { MdExitToApp } from "react-icons/md";
 
 import { Container, Grid, Button } from "@material-ui/core";
@@ -7,6 +7,8 @@ import { Container, Grid, Button } from "@material-ui/core";
 import Logo from "../../components/Logo";
 
 const Login = () => {
+  const history = useHistory();
+
   const getHashParams = () => {
     const hashParams = {};
     let e,
@@ -22,8 +24,12 @@ const Login = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
+
+    const clientID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+    const redirectUri = process.env.REACT_APP_SPOTIFY_REDIRECT_URI;
+
     window.open(
-      `https://accounts.spotify.com/authorize?client_id=26ac2bc242bf4fc380fe114df129e31e&response_type=token&redirect_uri=http://localhost:3002/&scope=user-read-private%20user-read-email&state=34fFs29kd09`,
+      `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=${redirectUri}&scope=user-read-private%20user-read-email`,
       "_self"
     );
   };
@@ -33,8 +39,7 @@ const Login = () => {
     localStorage.setItem("@SpotiFood:type", type);
     localStorage.setItem("@SpotiFood:expires_in", expires_in);
 
-    window.history.pushState({ urlPath: "/auth" }, "", "/auth");
-    window.location.reload();
+    history.push("/auth");
 
     return (
       <Switch>
