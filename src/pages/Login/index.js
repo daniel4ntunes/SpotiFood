@@ -32,10 +32,10 @@ const Login = () => {
     );
   };
 
-  const handleLogin = (token, type, expires_in) => {
+  const handleLogin = (token, type, expiresIn) => {
     localStorage.setItem("@SpotiFood:token", token);
     localStorage.setItem("@SpotiFood:type", type);
-    localStorage.setItem("@SpotiFood:expires_in", expires_in);
+    localStorage.setItem("@SpotiFood:expires_in", expiresIn);
 
     window.history.pushState({ urlPath: "/auth" }, "", "/auth");
     window.location.reload();
