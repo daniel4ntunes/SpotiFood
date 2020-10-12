@@ -28,9 +28,8 @@ const Home = () => {
     const getPlaylists = () => {
       dispatch(loadingPlaylists());
       api
-        .get(`browse/featured-playlists`, { params: filter })
+        .get("browse/featured-playlists", { params: filter })
         .then((response) => {
-          console.log(response.data.playlists.items);
           dispatch(listPlaylists(response.data.playlists.items));
         })
         .catch((error) => {
