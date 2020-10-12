@@ -27,6 +27,10 @@ const playlists = (state = INITIAL_STATE, action) => {
       ...state,
       text: action.payload,
     },
+    FILTER_PLAYLISTS: {
+      ...state,
+      filter: action.payload,
+    },
     default: state,
   };
 
