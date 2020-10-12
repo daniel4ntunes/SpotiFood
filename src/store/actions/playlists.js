@@ -17,5 +17,5 @@ export const searchPlaylists = (payload) => ({
 
 export const filterPlaylists = (payload) => ({
   type: "FILTER_PLAYLISTS",
-  payload: payload,
+  payload,
 });
