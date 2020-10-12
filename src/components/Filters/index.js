@@ -38,11 +38,14 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const checkParams = (params) => {
-    for (var propName in params) {
-      if (!params[propName]) delete params[propName];
-    }
+    const filtered = Object.entries(params)
+      .filter((value) => value[1])
+      .reduce((obj, key) => {
+        obj[key[0]] = key[1];
+        return obj;
+      }, {});
 
-    return params;
+    return filtered;
   };
 
   const handleChangeFilter = (reset = false) => {
