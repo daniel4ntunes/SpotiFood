@@ -1,11 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/76cdedac-a8db-46cf-945c-af88116a5a62/deploy-status)](https://app.netlify.com/sites/spotifood-daniel4ntunes/deploys)
 
-<a href="https://github.com/daniel4ntunes/SpotiFood/commits/master">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/daniel4ntunes/SpotiFood.svg">
-</a>
-
-<img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
-
 # REACT CHALLENGE
 
 Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
