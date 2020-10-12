@@ -15,12 +15,9 @@ import {
 } from "@material-ui/core";
 
 import {
-  loadingPlaylists,
-  listPlaylists,
   searchPlaylists,
-  failurePlaylists,
+  filterPlaylists,
 } from "../../store/actions/playlists";
-import api from "../../services/api";
 
 const initialStateFields = {
   locale: "",
@@ -60,17 +57,7 @@ const Filters = () => {
       setHasButtonReset(false);
     }
 
-    dispatch(loadingPlaylists());
-    api
-      .get("browse/featured-playlists", {
-        params,
-      })
-      .then((response) => {
-        dispatch(listPlaylists(response.data.playlists.items));
-      })
-      .catch((error) => {
-        dispatch(failurePlaylists(error.response.data));
-      });
+    dispatch(filterPlaylists(params));
   };
 
   useEffect(() => {

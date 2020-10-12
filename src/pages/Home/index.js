@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MdExitToApp } from "react-icons/md";
 import { Container, Grid, Button } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
@@ -22,12 +22,15 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const filter = useSelector((state) => state.playlists.filter);
+
   useEffect(() => {
     const getPlaylists = () => {
       dispatch(loadingPlaylists());
       api
-        .get("browse/featured-playlists")
+        .get(`browse/featured-playlists`, { params: filter })
         .then((response) => {
+          console.log(response.data.playlists.items);
           dispatch(listPlaylists(response.data.playlists.items));
         })
         .catch((error) => {
@@ -44,7 +47,7 @@ const Home = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [dispatch]);
+  }, [dispatch, filter]);
 
   return (
     <Container maxWidth="lg">
