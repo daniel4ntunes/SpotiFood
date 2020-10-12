@@ -48,10 +48,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    const { access_token, token_type, expires_in } = getHashParams();
+    const {
+      access_token: accessToken,
+      token_type: tokenType,
+      expires_in: expiresIn,
+    } = getHashParams();
 
-    if (access_token !== undefined) {
-      handleLogin(access_token, token_type, expires_in);
+    if (accessToken) {
+      handleLogin(accessToken, tokenType, expiresIn);
     }
   }, []);
 
