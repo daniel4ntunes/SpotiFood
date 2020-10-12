@@ -195,6 +195,17 @@ const Filters = () => {
                     variant="outlined"
                     size="small"
                     fullWidth
+                    error={
+                      (fields[filter.id] &&
+                        Number(fields[filter.id]) < filter?.validation?.min) ||
+                      Number(fields[filter.id]) > filter?.validation?.max
+                    }
+                    helperText={
+                      ((fields[filter.id] &&
+                        Number(fields[filter.id]) < filter?.validation?.min) ||
+                        Number(fields[filter.id]) > filter?.validation?.max) &&
+                      `Incorrect entry, min value ${filter?.validation?.min} and max value ${filter?.validation?.max}`
+                    }
                     InputProps={{
                       inputProps: {
                         min: filter?.validation?.min,
