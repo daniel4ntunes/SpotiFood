@@ -22,17 +22,19 @@ import {
 } from "../../store/actions/playlists";
 import api from "../../services/api";
 
+const initialStateFields = {
+  locale: "",
+  country: "",
+  timestamp: "",
+  limit: "",
+  offset: "",
+};
+
 const Filters = () => {
   const [filters, setFilters] = useState([]);
   const [showFilterOptions, setShowFilterOption] = useState(false);
   const [search, setSearch] = useState("");
-  const [fields, setFields] = useState({
-    locale: "",
-    country: "",
-    timestamp: "",
-    limit: "",
-    offset: "",
-  });
+  const [fields, setFields] = useState(initialStateFields);
   const [hasButtonReset, setHasButtonReset] = useState(false);
 
   const dispatch = useDispatch();
@@ -54,13 +56,7 @@ const Filters = () => {
     setHasButtonReset(Object.keys(fields).length > 0);
 
     if (reset) {
-      setFields({
-        locale: "",
-        country: "",
-        timestamp: "",
-        limit: "",
-        offset: "",
-      });
+      setFields(initialStateFields);
       setHasButtonReset(false);
     }
 

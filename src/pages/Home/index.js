@@ -25,7 +25,6 @@ const Home = () => {
   useEffect(() => {
     const getPlaylists = () => {
       dispatch(loadingPlaylists());
-
       api
         .get("browse/featured-playlists")
         .then((response) => {
