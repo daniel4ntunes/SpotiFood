@@ -5,7 +5,7 @@ const INITIAL_STATE = {
 };
 
 const playlists = (state = INITIAL_STATE, action) => {
-  const Users = {
+  const reducers = {
     LOADING_PLAYLISTS: {
       ...state,
       loading: true,
@@ -30,7 +30,7 @@ const playlists = (state = INITIAL_STATE, action) => {
     default: state,
   };
 
-  return Users[action.type] || Users.default;
+  return reducers[action.type] || reducers.default;
 };
 
 export default playlists;
