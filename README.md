@@ -7,7 +7,7 @@ Create a web application called Spotifood used to display the preferred playlist
 
 - A page that lists the featured playlists at Spotify according to some criteria.
 
-We're providing you the initial setup and dependencies, but if you need, feel free to add further dependencies while keeping the core untouched (React 16, React Router 4.x, SuperAgent or similar XHR lib).
+We're providing you the initial setup and dependencies, but if you need, feel free to add further dependencies while keeping the core untouched (React 16, React Router 5.x, SuperAgent or similar XHR lib).
 
 To run the project, you need to have Node (and npm or yarn) installed:
 
