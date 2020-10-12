@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
   CardContent,
@@ -7,7 +7,7 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
-import { MdSkipPrevious, MdPlayArrow, MdSkipNext } from "react-icons/md";
+import { MdPlayArrow, MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Playlist = ({ item }) => {
+const Playlist = ({ item, favorite, onChangeFavorite }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Card className={classes.root}>
@@ -56,14 +55,16 @@ const Playlist = ({ item }) => {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          <IconButton aria-label="previous">
-            {theme.direction === "rtl" ? <MdSkipNext /> : <MdSkipPrevious />}
-          </IconButton>
-          <IconButton aria-label="play/pause">
+          <IconButton
+            onClick={() => window.open(item.external_urls.spotify)}
+            aria-label="play/pause"
+          >
             <MdPlayArrow className={classes.playIcon} />
           </IconButton>
-          <IconButton aria-label="next">
-            {theme.direction === "rtl" ? <MdSkipPrevious /> : <MdSkipNext />}
+          <IconButton onClick={onChangeFavorite} aria-label="play/pause">
+            {(favorite && <MdFavorite color="#ea1d2c" />) || (
+              <MdFavoriteBorder />
+            )}
           </IconButton>
         </div>
       </div>

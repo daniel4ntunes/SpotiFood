@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Grid, Typography, CircularProgress } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
@@ -7,6 +7,8 @@ import { MdSentimentDissatisfied } from "react-icons/md";
 import Playlist from "../Playlist";
 
 const ListPlaylists = () => {
+  const [favorite, setFavorite] = useState({});
+
   const playlists = useSelector((state) => {
     if (state.playlists.text) {
       return state.playlists.playlists.filter((playlist) =>
@@ -20,6 +22,13 @@ const ListPlaylists = () => {
   const loading = useSelector((state) => state.playlists.loading);
 
   const error = useSelector((state) => state.playlists.error);
+
+  const onChangeFavorite = (id) => {
+    setFavorite((prevFavorite) => ({
+      ...prevFavorite,
+      [id]: !prevFavorite[id],
+    }));
+  };
 
   if (loading) {
     return (
@@ -52,7 +61,11 @@ const ListPlaylists = () => {
         playlists.length > 0 &&
         playlists.map((playlist, key) => (
           <Grid key={key} item lg={4} md={6} xs={12}>
-            <Playlist item={playlist} />
+            <Playlist
+              item={playlist}
+              favorite={favorite[playlist.uri]}
+              onChangeFavorite={() => onChangeFavorite(playlist.uri)}
+            />
           </Grid>
         ))) || (
         <Grid
