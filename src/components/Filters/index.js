@@ -53,7 +53,7 @@ const Filters = () => {
   const handleChangeFilter = (reset = false) => {
     const params = (!reset && checkParams(fields)) || {};
 
-    setHasButtonReset(Object.keys(fields).length > 0);
+    setHasButtonReset(Object.keys(checkParams(fields)).length > 0);
 
     if (reset) {
       setFields(initialStateFields);
@@ -235,6 +235,7 @@ const Filters = () => {
                 color="primary"
                 startIcon={<MdSearch />}
                 onClick={() => handleChangeFilter()}
+                disabled={Object.keys(checkParams(fields)).length === 0}
               >
                 Apply
               </Button>
