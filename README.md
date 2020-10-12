@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c2a5d15cebcd4513af38b94baa63f1f8)](https://app.codacy.com/gh/daniel4ntunes/SpotiFood?utm_source=github.com&utm_medium=referral&utm_content=daniel4ntunes/SpotiFood&utm_campaign=Badge_Grade)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/76cdedac-a8db-46cf-945c-af88116a5a62/deploy-status)](https://app.netlify.com/sites/spotifood-daniel4ntunes/deploys)
 
 # REACT CHALLENGE
