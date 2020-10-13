@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MdExitToApp } from "react-icons/md";
 import { Container, Grid, Button } from "@material-ui/core";
@@ -21,8 +21,17 @@ const Home = () => {
   const hasAuthorization = !!localStorage.getItem("@SpotiFood:token");
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const filter = useSelector((state) => state.playlists.filter);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("@SpotiFood:token");
+    localStorage.removeItem("@SpotiFood:type");
+    localStorage.removeItem("@SpotiFood:expires_in");
+
+    history.push("/");
+  };
 
   useEffect(() => {
     const getPlaylists = () => {
@@ -59,15 +68,16 @@ const Home = () => {
           justify="space-between"
         >
           <Logo />
-          <Button
-            component={Link}
-            to="/"
-            color="primary"
-            size="small"
-            startIcon={<MdExitToApp />}
-          >
-            Log out
-          </Button>
+          {hasAuthorization && !expiredToken && (
+            <Button
+              color="primary"
+              size="small"
+              startIcon={<MdExitToApp />}
+              onClick={handleLogOut}
+            >
+              Log out
+            </Button>
+          )}
         </Grid>
         {hasAuthorization ? (
           (!expiredToken && (
